@@ -18,3 +18,5 @@ export type ReactElementFun = (
 	ref: Ref,
 	props: Props
 ) => ReactElementType;
+
+export type Action<State> = State | ((prevState: State) => State);

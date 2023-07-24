@@ -17,9 +17,9 @@
 		"noUnusedParameters": false,
 		"noImplicitReturns": false,
 		"skipLibCheck": true,
-		"baseUrl": "./packages"
-		// "paths": {
-		// 	"hostConfig": ["./react-dom/src/hostConfig.ts"]
-		// }
+		"baseUrl": "./packages",
+		"paths": {
+			"hostConfig": ["./react-reconclier/src/hostConfig.ts"]
+		}
 	}
 }
