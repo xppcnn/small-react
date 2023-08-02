@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 const App = () => {
+	const [num, setNum] = useState(100);
 	return (
 		<div>
-			<span>3333</span>
+			<span>{num}</span>
 		</div>
 	);
 };
