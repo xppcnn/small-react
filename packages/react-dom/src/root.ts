@@ -10,7 +10,7 @@ export function createRoot(container: Container) {
 	console.log('2222');
 	return {
 		render(element: ReactElementType) {
-			updateContainer(element, root);
+			return updateContainer(element, root);
 		}
 	};
 }

@@ -19,6 +19,7 @@ const ReactElement: ReactElementFun = (type, key, ref, props) => {
 	return element;
 };
 export const jsx = (type: ElementType, config: any, ...mayChildren: any) => {
+	console.log('🚀 ~ file: jsx.ts:22 ~ jsx ~ mayChildren:', mayChildren);
 	let key: Key = null;
 	const props: Props = {};
 	let ref: Ref = null;
@@ -27,7 +28,7 @@ export const jsx = (type: ElementType, config: any, ...mayChildren: any) => {
 		const val = config[prop];
 		if (prop === 'key') {
 			if (val !== undefined) {
-				key = val;
+				key = val + '';
 			}
 			continue;
 		}
@@ -41,13 +42,14 @@ export const jsx = (type: ElementType, config: any, ...mayChildren: any) => {
 		if (Object.hasOwnProperty.call(config, prop)) {
 			props[prop] = val;
 		}
-		const mayChildrenLength = mayChildren.length;
-		if (mayChildrenLength) {
-			if (mayChildrenLength === 1) {
-				props.children = mayChildren[0];
-			} else {
-				props.children = mayChildren;
-			}
+	}
+
+	const mayChildrenLength = mayChildren.length;
+	if (mayChildrenLength) {
+		if (mayChildrenLength === 1) {
+			props.children = mayChildren[0];
+		} else {
+			props.children = mayChildren;
 		}
 	}
 	return ReactElement(type, key, ref, props);
@@ -62,7 +64,7 @@ export const jsxDEV = (type: ElementType, config: any) => {
 		const val = config[prop];
 		if (prop === 'key') {
 			if (val !== undefined) {
-				key = val;
+				key = val + '';
 			}
 			continue;
 		}
@@ -78,4 +80,12 @@ export const jsxDEV = (type: ElementType, config: any) => {
 		}
 	}
 	return ReactElement(type, key, ref, props);
+};
+
+export const isValidElement = (object: any) => {
+	return (
+		typeof object === 'object' &&
+		object !== null &&
+		object.$$typeof === REACT_ELEMENT_TYPE
+	);
 };

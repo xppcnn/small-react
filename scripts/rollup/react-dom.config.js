@@ -43,5 +43,17 @@ export default [
 				})
 			})
 		]
+	},
+	{
+		input: `${pkgPath}/test-utils.ts`,
+		output: [
+			{
+				file: `${pkgDistPath}/test-utils.js`,
+				name: 'testUtils',
+				format: 'umd'
+			}
+		],
+		external: ['react', 'react-dom'], // 避免将外部包代码打包
+		plugins: [getBaseRollupPlugins()]
 	}
 ];

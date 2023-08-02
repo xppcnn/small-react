@@ -2,7 +2,7 @@ import currentDispatcher, {
 	Dispatcher,
 	resolveDispatcher
 } from './src/currentDispatcher';
-import { jsxDEV } from './src/jsx';
+import { jsx, isValidElement as isValidElementFn } from './src/jsx';
 
 export const useState: Dispatcher['useState'] = (initialState) => {
 	const dispatcher = resolveDispatcher();
@@ -14,7 +14,11 @@ export const useState: Dispatcher['useState'] = (initialState) => {
 export const __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = {
 	currentDispatcher
 };
-export default {
-	version: '1.0.0',
-	createElement: jsxDEV
-};
+export const version = '1.0.0';
+
+export const isValidElement = isValidElementFn;
+export const createElement = jsx;
+// export default {
+// 	version: '1.0.0',
+// 	createElement: jsxDEV
+// };
