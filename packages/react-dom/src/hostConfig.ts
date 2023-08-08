@@ -1,5 +1,6 @@
 export type Container = Element;
 export type Instance = Element;
+export type TextInstance = Text;
 export function createInstance(type: string, props: any): Instance {
 	const element = document.createElement(type);
 	return element;
@@ -14,3 +15,14 @@ export function appendInitialChild(
 	parent.appendChild(child);
 }
 export const appendChildToContainer = appendInitialChild;
+
+export function commitTextUpdate(textInstance: TextInstance, content: string) {
+	textInstance.textContent = content;
+}
+
+export function removeChild(
+	child: Instance | TextInstance,
+	container: Container
+) {
+	container.removeChild(child);
+}
